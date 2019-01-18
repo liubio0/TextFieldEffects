@@ -69,7 +69,8 @@ import UIKit
         }
     }
     
-    private let borderThickness: (active: CGFloat, inactive: CGFloat) = (active: 2, inactive: 0.5)
+    
+    private var borderThickness: (active: CGFloat, inactive: CGFloat) = (active: 2, inactive: 0.5)
     private let placeholderInsets = CGPoint(x: 0, y: 6)
     private let textFieldInsets = CGPoint(x: 0, y: 12)
     private let inactiveBorderLayer = CALayer()
@@ -174,6 +175,11 @@ import UIKit
             width: placeholderLabel.bounds.width, height: placeholderLabel.bounds.height)
         activePlaceholderPoint = CGPoint(x: placeholderLabel.frame.origin.x, y: placeholderLabel.frame.origin.y - placeholderLabel.frame.size.height - placeholderInsets.y)
 
+    }
+    
+    // MARK: - public
+    open func updatePlaceholderThick(active: CGFloat, inactive: CGFloat) {
+        borderThickness = (active: active, inactive: inactive)
     }
     
     // MARK: - Overrides
