@@ -62,6 +62,13 @@ import UIKit
         }
     }
     
+    open override var attributedPlaceholder: NSAttributedString? {
+        didSet {
+            updatePlaceholder()
+        }
+    }
+    
+    
     override open var bounds: CGRect {
         didSet {
             updateBorder()
@@ -137,8 +144,12 @@ import UIKit
     }
     
     private func updatePlaceholder() {
-        placeholderLabel.text = placeholder
         placeholderLabel.textColor = placeholderColor
+        if attributedPlaceholder != nil {
+            placeholderLabel.attributedText = attributedPlaceholder
+        } else {
+            placeholderLabel.text = placeholder
+        }
         placeholderLabel.sizeToFit()
         layoutPlaceholderInTextRect()
         

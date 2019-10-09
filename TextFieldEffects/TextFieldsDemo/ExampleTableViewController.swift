@@ -13,6 +13,8 @@ class ExampleTableViewController : UITableViewController {
     
     @IBOutlet private var textFields: [TextFieldEffects]!
     
+    @IBOutlet weak var hoshiTextField: HoshiTextField!
+    
     /**
     Set this value to true if you want to see all the "firstName"
     textFields prepopulated with the name "Raul" (for testing purposes)
@@ -21,6 +23,9 @@ class ExampleTableViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let str = NSMutableAttributedString.init(string: "富文本测试")
+        str.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], range: NSRange(location: 0, length: 1))
+        hoshiTextField.attributedPlaceholder = str
         
         guard prefillTextFields == true else { return }
         
